@@ -1,6 +1,8 @@
 package com.mq.binary_process.factory;
 
 import com.mq.message.VMessage;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import java.nio.ByteBuffer;
 
 /**
@@ -33,6 +35,14 @@ public class SerialTypeFactory {
     byte[] bytes = new byte[originLength];
     byteBuffer.get(bytes);
     return serialMethod.decode(bytes, VMessage.class);
+  }
+
+  public ByteBuf encode(final Object obj) {
+    VSerializable serialMethod = getSerialMethod(SerialTypeEnum.DEFAULT);
+    byte[] encode = serialMethod.encode(obj);
+    ByteBuf byteBuf = Unpooled.buffer(encode.length);
+    byteBuf.writeBytes(encode);
+    return byteBuf;
   }
 
 }

@@ -8,5 +8,13 @@
   <artifactId>mq-center</artifactId>
   <version>0.0.1.start</version>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.mq</groupId>
+      <artifactId>mq-common</artifactId>
+      <version>0.0.1.start</version>
+    </dependency>
+  </dependencies>
+
 
 </project>
